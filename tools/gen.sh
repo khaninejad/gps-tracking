@@ -18,3 +18,11 @@ ${SRC_DIR}/gps.proto
 node_modules/.bin/pbts \
 --out ${DEST_DIR}/client.grpc.d.ts \
 ${DEST_DIR}/client.grpc.js
+
+
+grpc_tools_node_protoc \
+--plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts \
+--ts_out=grpc_js:./ \
+--js_out=import_style=commonjs:./ \
+--grpc_out=grpc_js:./ \
+${SRC_DIR}/gps.proto 
