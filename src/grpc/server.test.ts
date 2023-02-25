@@ -3,12 +3,18 @@ import {GRPC_SERVER_ADDRESS} from '../config/config';
 import {GrpcServer} from './server';
 
 jest.mock('@grpc/grpc-js');
+jest.mock('../config/datasource', () => ({
+  AppDataSource: {
+    initialize: jest.fn().mockResolvedValue(undefined),
+  },
+}));
 
 describe('GrpcServer', () => {
   let server: GrpcServer;
   let grpcServer: jest.Mocked<grpc.Server>;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    console.log('database initialized');
     grpcServer = new grpc.Server() as jest.Mocked<grpc.Server>;
     server = new GrpcServer(grpcServer, GRPC_SERVER_ADDRESS);
   });

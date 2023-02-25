@@ -1,7 +1,8 @@
 import * as grpc from '@grpc/grpc-js';
-import {GRPC_SERVER_ADDRESS} from '../config/config';
+import {GRPC_SERVER_ADDRESS, GRPC_SERVER_PORT} from '../config/config';
+import {AppDataSource} from '../config/datasource';
 import {GpsServiceService} from '../proto/gps_grpc_pb';
-import {sendGpsData} from './send.data';
+import {GpsService} from './send.data';
 
 export class GrpcServer {
   private run = false;
@@ -11,7 +12,7 @@ export class GrpcServer {
 
   constructor(server: grpc.Server, url: string) {
     this.server = server;
-    this.server.addService(GpsServiceService, {sendGpsData});
+    this.server.addService(GpsServiceService, new GpsService());
     this.url = url;
   }
 
@@ -35,4 +36,10 @@ export class GrpcServer {
 }
 
 const server = new GrpcServer(new grpc.Server(), GRPC_SERVER_ADDRESS);
-server.start().then(() => console.log('Server is started'));
+AppDataSource.initialize()
+  .then(async () => {
+    console.log('database initialized');
+    server.start().then(() => console.log('Server is started'));
+    console.log('Server running on port', GRPC_SERVER_PORT);
+  })
+  .catch(error => console.log(error));
