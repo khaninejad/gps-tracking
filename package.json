@@ -7,6 +7,7 @@
     "start": "npx ts-node src/index.ts",
     "start:grpc": "npx ts-node src/grpc/server.ts",
     "start:rest": "npx ts-node src/index.ts",
+    "serve": "npm run start:grpc & npm run start:rest",
     "build": "tsc",
     "test": "jest",
     "lint": "gts lint",
@@ -44,7 +45,8 @@
     "protobufjs": "^6.11.3",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^10.9.1",
-    "typeorm": "^0.3.12"
+    "typeorm": "^0.3.12",
+    "winston": "^3.8.2"
   },
   "testPathIgnorePatterns": [
     "src/proto"

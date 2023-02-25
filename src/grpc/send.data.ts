@@ -2,6 +2,7 @@ import {GpsData, GpsResponse} from '../proto/gps_pb';
 import * as grpc from '@grpc/grpc-js';
 import {DeviceService} from '../services/device.service';
 import {GpsLogService} from '../services/gpsLog.service';
+import Logger from '../utils/logger';
 
 export class GpsService implements grpc.UntypedServiceImplementation {
   [name: string]: grpc.UntypedHandleCall;
@@ -9,6 +10,7 @@ export class GpsService implements grpc.UntypedServiceImplementation {
     call: grpc.ServerUnaryCall<GpsData, GpsResponse>,
     callback: grpc.sendUnaryData<GpsResponse>
   ): Promise<void> {
+    Logger.info('GpsService request');
     const response = new GpsResponse();
     try {
       const gpsLogService = new GpsLogService(new DeviceService());
@@ -21,7 +23,7 @@ export class GpsService implements grpc.UntypedServiceImplementation {
       callback(null, response);
     } catch (error: any) {
       response.setMessage(error.message);
-      console.log(error.message);
+      Logger.error(error.message);
       callback(null, response);
     }
   }

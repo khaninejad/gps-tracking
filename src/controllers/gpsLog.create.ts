@@ -3,6 +3,7 @@ import * as grpc from '@grpc/grpc-js';
 import {GpsData, GpsResponse} from '../proto/gps_pb';
 import {GpsServiceClient} from '../proto/gps_grpc_pb';
 import {GRPC_SERVER_ADDRESS} from '../config/config';
+import Logger from '../utils/logger';
 
 export class CreateLogInput {
   device_id: string;
@@ -16,6 +17,7 @@ class GpsLogController {
     res: Response,
     next: NextFunction
   ): Promise<boolean> {
+    Logger.info('GpsLogController createGpsLog');
     try {
       const response = await this.getGrpcData(req);
       res.status(201).json({
@@ -25,6 +27,7 @@ class GpsLogController {
         },
       });
     } catch (error: any) {
+      Logger.error(`GpsLogController createGpsLog ${error}`);
       res.status(409).json({
         status: 'fail',
         message: error.message,

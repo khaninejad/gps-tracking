@@ -14,7 +14,6 @@ describe('GrpcServer', () => {
   let grpcServer: jest.Mocked<grpc.Server>;
 
   beforeEach(async () => {
-    console.log('database initialized');
     grpcServer = new grpc.Server() as jest.Mocked<grpc.Server>;
     server = new GrpcServer(grpcServer, GRPC_SERVER_ADDRESS);
   });
