@@ -10,10 +10,8 @@ const deviceController = new DeviceController(deviceService);
 
 const tokenVerifier = new TokenVerifier(deviceService);
 
-router
-  .route('/')
-  .post(tokenVerifier.verifyToken.bind(tokenVerifier), (req, res, next) => {
-    deviceController.createDeviceHandler(req, res, next);
-  });
+router.route('/').post((req, res, next) => {
+  deviceController.createDeviceHandler(req, res, next);
+});
 
 export default router;

@@ -5,7 +5,6 @@ SRC_DIR=./src/proto
 DEST_DIR=./src/proto/generated
 
 
-
 # protobuf.js
 node_modules/.bin/pbjs \
 --target static-module \
@@ -26,3 +25,5 @@ grpc_tools_node_protoc \
 --js_out=import_style=commonjs:./ \
 --grpc_out=grpc_js:./ \
 ${SRC_DIR}/gps.proto 
+
+cp -R ${SRC_DIR} ./build/src

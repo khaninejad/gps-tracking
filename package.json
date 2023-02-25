@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "npx ts-node src/index.ts",
-    "start:grpc": "npx ts-node src/grpc/server.ts",
-    "start:rest": "npx ts-node src/index.ts",
+    "start:grpc": "npx ts-node build/src/grpc/server.js",
+    "start:rest": "npx ts-node build/src/index.js",
     "serve": "npm run start:grpc & npm run start:rest",
-    "build": "tsc",
     "test": "jest",
     "lint": "gts lint",
     "clean": "gts clean",
