@@ -56,7 +56,9 @@ Details of other commands:
 **gen:proto**: Generates protocol buffer files from .proto files.
 
 
+
 This package includes the following dependencies:
+
 
 **@grpc/grpc-js**: gRPC library for Node.js.
 
