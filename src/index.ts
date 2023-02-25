@@ -4,12 +4,18 @@ import gpsLogRouter from './routes/gpsLogRouter';
 import deviceRouter from './routes/deviceRouter';
 import {GRPC_SERVER_PORT} from './config/config';
 import Logger from './utils/logger';
+import {AppDataSource} from './config/datasource';
 
 export const app = express();
-
-app.listen(GRPC_SERVER_PORT);
-Logger.info(`Server running on port ${GRPC_SERVER_PORT}`);
 
 app.use(express.json());
 app.use('/api/gps-logs', gpsLogRouter);
 app.use('/api/device', deviceRouter);
+
+AppDataSource.initialize()
+  .then(async () => {
+    Logger.info('database initialized');
+    app.listen(GRPC_SERVER_PORT);
+    Logger.info(`Rest server running on port ${GRPC_SERVER_PORT}`);
+  })
+  .catch(error => Logger.error(error));

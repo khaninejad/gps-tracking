@@ -19,4 +19,21 @@ export class DeviceService {
       ],
     });
   }
+  async checkDeviceToken(
+    token: string
+  ): Promise<boolean | PromiseLike<boolean>> {
+    try {
+      const res = await this.deviceRepository.findOneOrFail({
+        where: [
+          {
+            token,
+          },
+        ],
+      });
+      if (res) return true;
+      return false;
+    } catch (error) {
+      return false;
+    }
+  }
 }
