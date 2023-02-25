@@ -36,6 +36,7 @@ class GpsLogController {
     }
     return true;
   }
+
   getGrpcData(req: Request<{}, {}, CreateLogInput>): Promise<GpsResponse> {
     const client = new GpsServiceClient(
       GRPC_SERVER_ADDRESS,
