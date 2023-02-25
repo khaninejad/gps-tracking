@@ -1,13 +1,8 @@
 import * as express from 'express';
 import GpsLogController from '../controllers/gpsLog.create';
-import {DeviceService} from '../services/device.service';
-import {GpsLogService} from '../services/gpsLog.service';
 
 const router = express.Router();
-const deviceService = new DeviceService();
-const gpsLogService = new GpsLogService(deviceService);
-
-const gpsLogController = new GpsLogController(gpsLogService);
+const gpsLogController = new GpsLogController();
 
 router
   .route('/')
