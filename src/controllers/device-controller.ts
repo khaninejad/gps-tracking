@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {NextFunction, Request, Response} from 'express';
 import {DeviceService} from '../services/device-service';
 import {CreateDeviceInput} from './device-controller-dtos';
+import {createDeviceInputSchema} from './device-controller-validator';
 
 class DeviceController {
   constructor(private readonly deviceService: DeviceService) {}
@@ -11,7 +13,12 @@ class DeviceController {
     next: NextFunction
   ): Promise<boolean> {
     try {
-      const device = await this.deviceService.createDevice(req.body!);
+      const {error, value} = createDeviceInputSchema.validate(req.body);
+      if (error) {
+        throw error;
+      }
+
+      const device = await this.deviceService.createDevice(value);
 
       res.status(201).json({
         status: 'success',

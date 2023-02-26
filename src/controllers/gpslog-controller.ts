@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {Request, Response} from 'express';
 import {GpsData, GpsResponse} from '../proto/gps_pb';
 import {GpsServiceClient} from '../proto/gps_grpc_pb';
 import Logger from '../utils/logger';
 import {CreateLogInput} from './gpslog-controller.dtos';
+import {createLogInputSchema} from './gpslog-controller.validator';
 
 class GpsLogController {
   constructor(private readonly client: GpsServiceClient) {}
@@ -12,7 +14,12 @@ class GpsLogController {
   ): Promise<boolean> {
     Logger.info('GpsLogController createGpsLog');
     try {
-      const response = await this.getGrpcData(req);
+      const {error, value} = createLogInputSchema.validate(req.body);
+
+      if (error) {
+        throw error;
+      }
+      const response = await this.getGrpcData(value);
       res.status(201).json({
         status: 'success',
         data: {

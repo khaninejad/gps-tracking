@@ -66,5 +66,19 @@ describe('GpsLogController', () => {
         message: '',
       });
     });
+
+    it('should throw error on invalid data', async () => {
+      const req = {body: {longitude: 12}};
+      await gpsLogController.createGpsLogHandler(
+        req as Request,
+        res as Response
+      );
+
+      expect(res.status).toHaveBeenCalledWith(409);
+      expect(res.json).toHaveBeenCalledWith({
+        status: 'fail',
+        message: '"device_id" is required',
+      });
+    });
   });
 });

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {Request, Response, NextFunction} from 'express';
 import {Device} from '../entities/device';
 import {DeviceService} from '../services/device-service';
@@ -64,6 +65,18 @@ describe('DeviceController', () => {
       const error = new Error('some other error');
       jest.spyOn(deviceService, 'createDevice').mockRejectedValueOnce(error);
 
+      await deviceController.createDeviceHandler(
+        req as Request,
+        res as Response,
+        next
+      );
+
+      expect(next).toHaveBeenCalledWith(error);
+    });
+
+    it('should throw error on invalid data', async () => {
+      const error = new Error('"token" is required');
+      const req = {body: {name: 'testDevice'}};
       await deviceController.createDeviceHandler(
         req as Request,
         res as Response,
