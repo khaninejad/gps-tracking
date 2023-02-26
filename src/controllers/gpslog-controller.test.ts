@@ -1,10 +1,11 @@
 import {randomUUID} from 'crypto';
 import {Request, Response} from 'express';
-import GpsLogController, {CreateLogInput} from './gpslog-controller';
+import GpsLogController from './gpslog-controller';
 import {GpsResponse} from '../proto/gps_pb';
 import {GRPC_SERVER_ADDRESS} from '../config/config';
 import {GpsServiceClient} from '../proto/gps_grpc_pb';
 import * as grpc from '@grpc/grpc-js';
+import {CreateLogInput} from './gpslog-controller.dtos';
 
 jest.mock('../proto/gps_grpc_pb', () => {
   const client = {

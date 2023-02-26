@@ -2,12 +2,7 @@ import {Request, Response} from 'express';
 import {GpsData, GpsResponse} from '../proto/gps_pb';
 import {GpsServiceClient} from '../proto/gps_grpc_pb';
 import Logger from '../utils/logger';
-
-export class CreateLogInput {
-  device_id: string;
-  latitude: number;
-  longitude: number;
-}
+import {CreateLogInput} from './gpslog-controller.dtos';
 
 class GpsLogController {
   constructor(private readonly client: GpsServiceClient) {}

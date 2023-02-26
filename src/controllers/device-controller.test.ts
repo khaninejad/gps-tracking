@@ -1,7 +1,8 @@
 import {Request, Response, NextFunction} from 'express';
 import {Device} from '../entities/device';
 import {DeviceService} from '../services/device-service';
-import DeviceController, {CreateDeviceInput} from './device-controller';
+import DeviceController from './device-controller';
+import {CreateDeviceInput} from './device-controller-dtos';
 
 describe('DeviceController', () => {
   let deviceService: DeviceService;
