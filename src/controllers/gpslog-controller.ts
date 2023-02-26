@@ -14,12 +14,12 @@ class GpsLogController {
   ): Promise<boolean> {
     Logger.info('GpsLogController createGpsLog');
     try {
-      const {error, value} = createLogInputSchema.validate(req.body);
+      const {error} = createLogInputSchema.validate(req.body);
 
       if (error) {
         throw error;
       }
-      const response = await this.getGrpcData(value);
+      const response = await this.getGrpcData(req);
       res.status(201).json({
         status: 'success',
         data: {
