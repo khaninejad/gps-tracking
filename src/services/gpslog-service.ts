@@ -1,5 +1,5 @@
 import {AppDataSource} from '../config/datasource';
-import {GpsLog} from '../entities/gpslog';
+import {GpsLog} from '../entities/gpsLog';
 import {DeviceService} from './device-service';
 
 export class GpsLogService {

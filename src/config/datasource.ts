@@ -1,6 +1,6 @@
 import {DataSource} from 'typeorm';
 import {Device} from '../entities/device';
-import {GpsLog} from '../entities/gpslog';
+import {GpsLog} from '../entities/gpsLog';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
