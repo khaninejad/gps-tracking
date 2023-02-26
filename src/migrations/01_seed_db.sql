@@ -35,8 +35,8 @@ CREATE TABLE IF NOT EXISTS public.logs
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     created_at timestamp without time zone NOT NULL DEFAULT now(),
     updated_at timestamp without time zone NOT NULL DEFAULT now(),
-    latitude integer NOT NULL,
-    longitude integer NOT NULL,
+    latitude NUMERIC(10,7) NOT NULL,
+    longitude NUMERIC(10,7) NOT NULL,
     "deviceId" uuid,
     CONSTRAINT "PK_fb1b805f2f7795de79fa69340ba" PRIMARY KEY (id),
     CONSTRAINT "FK_be1ca91d63bcd4aadd61c9b5b97" FOREIGN KEY ("deviceId")
