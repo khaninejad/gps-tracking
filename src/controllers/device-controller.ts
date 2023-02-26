@@ -1,10 +1,6 @@
 import {NextFunction, Request, Response} from 'express';
 import {DeviceService} from '../services/device-service';
-
-export class CreateDeviceInput {
-  name: string;
-  token: string;
-}
+import {CreateDeviceInput} from './device-controller-dtos';
 
 class DeviceController {
   constructor(private readonly deviceService: DeviceService) {}

@@ -1,7 +1,7 @@
 import {GpsData, GpsResponse} from '../proto/gps_pb';
 import * as grpc from '@grpc/grpc-js';
 import {GpsLogService} from '../services/gpslog-service';
-import {GpsService} from './gprs-resolver';
+import {GpsService} from './grpc-resolver';
 
 jest.mock('../services/gpslog-service');
 
