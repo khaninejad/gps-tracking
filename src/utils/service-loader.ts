@@ -25,7 +25,6 @@ export class ServiceLoader {
       grpc.loadPackageDefinition(definition)[args.package] as any
     )[args.service];
     return new service(args.url, grpc.credentials.createInsecure(), {
-      interceptors: [_exports(3, [grpc.status.UNAVAILABLE])],
       'grpc.keepalive_timeout_ms': 1500,
       'grpc.keepalive_permit_without_calls': 1,
     });
