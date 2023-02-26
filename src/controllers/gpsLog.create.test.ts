@@ -1,7 +1,10 @@
 import {randomUUID} from 'crypto';
-import {Request, Response, NextFunction} from 'express';
+import {Request, Response} from 'express';
 import GpsLogController, {CreateLogInput} from './gpsLog.create';
 import {GpsResponse} from '../proto/gps_pb';
+import {GRPC_SERVER_ADDRESS} from '../config/config';
+import {GpsServiceClient} from '../proto/gps_grpc_pb';
+import * as grpc from '@grpc/grpc-js';
 
 jest.mock('../proto/gps_grpc_pb', () => {
   const client = {
@@ -18,16 +21,19 @@ describe('GpsLogController', () => {
   let gpsLogController: GpsLogController;
   let req: Partial<Request<{}, {}, CreateLogInput>>;
   let res: Partial<Response>;
-  let next: jest.MockedFunction<NextFunction>;
 
   beforeEach(() => {
-    gpsLogController = new GpsLogController();
+    const client = new GpsServiceClient(
+      GRPC_SERVER_ADDRESS,
+      grpc.credentials.createInsecure()
+    );
+
+    gpsLogController = new GpsLogController(client);
     req = {body: {latitude: 20, longitude: 30, device_id: randomUUID()}};
     res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
     };
-    next = jest.fn();
   });
 
   describe('createLogHandler', () => {
