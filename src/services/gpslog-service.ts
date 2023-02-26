@@ -1,10 +1,14 @@
 import {AppDataSource} from '../config/datasource';
 import {GpsLog} from '../entities/gpsLog';
+import {Services} from '../utils/services';
 import {DeviceService} from './device-service';
 
 export class GpsLogService {
   private gpsLogRepository = AppDataSource.getRepository(GpsLog);
-  constructor(private readonly deviceService: DeviceService) {}
+  private deviceService: DeviceService;
+  constructor() {
+    this.deviceService = Services.deviceService;
+  }
 
   async createLog(input: Partial<GpsLog>, device_id: string) {
     const device = await this.deviceService.getDeviceById(device_id);

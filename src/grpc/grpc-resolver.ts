@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {GpsData, GpsResponse} from '../proto/gps_pb';
 import * as grpc from '@grpc/grpc-js';
-import {DeviceService} from '../services/device-service';
 import {GpsLogService} from '../services/gpslog-service';
 import Logger from '../utils/logger';
 
@@ -14,7 +13,7 @@ export class GpsService implements grpc.UntypedServiceImplementation {
     Logger.info('GpsService request');
     const response = new GpsResponse();
     try {
-      const gpsLogService = new GpsLogService(new DeviceService());
+      const gpsLogService = new GpsLogService();
       const req = call.request;
       const res = await gpsLogService.createLog(
         {latitude: req.getLatitude(), longitude: req.getLongitude()},

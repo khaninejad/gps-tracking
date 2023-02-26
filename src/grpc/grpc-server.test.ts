@@ -6,6 +6,7 @@ jest.mock('@grpc/grpc-js');
 jest.mock('../config/datasource', () => ({
   AppDataSource: {
     initialize: jest.fn().mockResolvedValue(undefined),
+    getRepository: jest.fn(),
   },
 }));
 

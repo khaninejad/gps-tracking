@@ -3,8 +3,8 @@ import {GRPC_SERVER_ADDRESS} from '../config/config';
 import GpsLogController from '../controllers/gpslog-controller';
 import {TokenVerifier} from '../middleware/auth-middleware';
 import {GpsServiceClient} from '../proto/gps_grpc_pb';
-import {DeviceService} from '../services/device-service';
 import * as grpc from '@grpc/grpc-js';
+import {Services} from '../utils/services';
 
 const router = express.Router();
 const client = new GpsServiceClient(
@@ -13,8 +13,7 @@ const client = new GpsServiceClient(
 );
 
 const gpsLogController = new GpsLogController(client);
-const deviceService = new DeviceService();
-const tokenVerifier = new TokenVerifier(deviceService);
+const tokenVerifier = new TokenVerifier(Services.deviceService);
 
 router
   .route('/')

@@ -24,7 +24,7 @@ describe('GpsLogService', () => {
     };
     AppDataSource.getRepository = jest.fn().mockReturnValue(gpsLogRepository);
     deviceService = new DeviceService();
-    gpsLogService = new GpsLogService(deviceService);
+    gpsLogService = new GpsLogService();
   });
 
   describe('createLog', () => {

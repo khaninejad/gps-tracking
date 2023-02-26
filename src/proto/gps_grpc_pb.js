@@ -1,8 +1,8 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 'use strict';
-var grpc = require('@grpc/grpc-js');
-var src_proto_gps_pb = require('../../src/proto/gps_pb.js');
+const grpc = require('@grpc/grpc-js');
+const src_proto_gps_pb = require('../../src/proto/gps_pb.js');
 
 function serialize_gps_GpsData(arg) {
   if (!(arg instanceof src_proto_gps_pb.GpsData)) {
@@ -23,11 +23,12 @@ function serialize_gps_GpsResponse(arg) {
 }
 
 function deserialize_gps_GpsResponse(buffer_arg) {
-  return src_proto_gps_pb.GpsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+  return src_proto_gps_pb.GpsResponse.deserializeBinary(
+    new Uint8Array(buffer_arg)
+  );
 }
 
-
-var GpsServiceService = exports.GpsServiceService = {
+const GpsServiceService = (exports.GpsServiceService = {
   sendGpsData: {
     path: '/gps.GpsService/SendGpsData',
     requestStream: false,
@@ -39,6 +40,6 @@ var GpsServiceService = exports.GpsServiceService = {
     responseSerialize: serialize_gps_GpsResponse,
     responseDeserialize: deserialize_gps_GpsResponse,
   },
-};
+});
 
 exports.GpsServiceClient = grpc.makeGenericClientConstructor(GpsServiceService);
