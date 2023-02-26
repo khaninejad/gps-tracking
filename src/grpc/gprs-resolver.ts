@@ -1,7 +1,7 @@
 import {GpsData, GpsResponse} from '../proto/gps_pb';
 import * as grpc from '@grpc/grpc-js';
-import {DeviceService} from '../services/device.service';
-import {GpsLogService} from '../services/gpsLog.service';
+import {DeviceService} from '../services/device-service';
+import {GpsLogService} from '../services/gpslog-service';
 import Logger from '../utils/logger';
 
 export class GpsService implements grpc.UntypedServiceImplementation {

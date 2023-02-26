@@ -3,7 +3,7 @@ import {GRPC_SERVER_ADDRESS, GRPC_SERVER_PORT} from '../config/config';
 import {AppDataSource} from '../config/datasource';
 import {GpsServiceService} from '../proto/gps_grpc_pb';
 import Logger from '../utils/logger';
-import {GpsService} from './send.data';
+import {GpsService} from './gprs-resolver';
 
 export class GrpcServer {
   private run = false;

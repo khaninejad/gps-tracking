@@ -1,9 +1,9 @@
 import * as express from 'express';
 import {GRPC_SERVER_ADDRESS} from '../config/config';
-import GpsLogController from '../controllers/gpsLog.create';
-import {TokenVerifier} from '../middleware/auth';
+import GpsLogController from '../controllers/gpslog-controller';
+import {TokenVerifier} from '../middleware/auth-middleware';
 import {GpsServiceClient} from '../proto/gps_grpc_pb';
-import {DeviceService} from '../services/device.service';
+import {DeviceService} from '../services/device-service';
 import * as grpc from '@grpc/grpc-js';
 
 const router = express.Router();

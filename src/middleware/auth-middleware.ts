@@ -1,5 +1,5 @@
 import {NextFunction, Response, Request} from 'express';
-import {DeviceService} from '../services/device.service';
+import {DeviceService} from '../services/device-service';
 
 export class TokenVerifier {
   constructor(private readonly deviceService: DeviceService) {}

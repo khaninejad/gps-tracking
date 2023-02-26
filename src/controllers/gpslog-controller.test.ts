@@ -1,6 +1,6 @@
 import {randomUUID} from 'crypto';
 import {Request, Response} from 'express';
-import GpsLogController, {CreateLogInput} from './gpsLog.create';
+import GpsLogController, {CreateLogInput} from './gpslog-controller';
 import {GpsResponse} from '../proto/gps_pb';
 import {GRPC_SERVER_ADDRESS} from '../config/config';
 import {GpsServiceClient} from '../proto/gps_grpc_pb';

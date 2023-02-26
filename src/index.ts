@@ -1,8 +1,8 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import * as express from 'express';
-import gpsLogRouter from './routes/gpsLogRouter';
-import deviceRouter from './routes/deviceRouter';
+import gpsLogRouter from './routes/gpslog-router';
+import deviceRouter from './routes/device-router';
 import {GRPC_SERVER_PORT} from './config/config';
 import Logger from './utils/logger';
 import {AppDataSource} from './config/datasource';

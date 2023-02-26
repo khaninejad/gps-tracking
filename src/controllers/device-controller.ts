@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from 'express';
-import {DeviceService} from '../services/device.service';
+import {DeviceService} from '../services/device-service';
 
 export class CreateDeviceInput {
   name: string;

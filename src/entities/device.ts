@@ -1,6 +1,6 @@
 import {Column, Entity, OneToMany} from 'typeorm';
-import Model from './baseEntity';
-import {GpsLog} from './gpsLog';
+import Model from './base-entity';
+import {GpsLog} from './gpslog';
 
 @Entity('devices')
 export class Device extends Model {

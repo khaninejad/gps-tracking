@@ -1,8 +1,8 @@
 import {AppDataSource} from '../config/datasource';
-import {DeviceService} from './device.service';
-import {GpsLogService} from './gpsLog.service';
+import {DeviceService} from './device-service';
+import {GpsLogService} from './gpslog-service';
 
-jest.mock('./device.service');
+jest.mock('./device-service');
 const device = {id: '1', name: 'Device 1', token: 'abc123'};
 
 describe('GpsLogService', () => {

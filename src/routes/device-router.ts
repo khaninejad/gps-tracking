@@ -1,7 +1,7 @@
 import * as express from 'express';
-import DeviceController from '../controllers/device.create';
-import {TokenVerifier} from '../middleware/auth';
-import {DeviceService} from '../services/device.service';
+import DeviceController from '../controllers/device-controller';
+import {TokenVerifier} from '../middleware/auth-middleware';
+import {DeviceService} from '../services/device-service';
 
 const router = express.Router();
 const deviceService = new DeviceService();

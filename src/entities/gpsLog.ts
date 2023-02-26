@@ -1,5 +1,5 @@
 import {Column, Entity, JoinColumn, ManyToOne} from 'typeorm';
-import Model from './baseEntity';
+import Model from './base-entity';
 import {Device} from './device';
 
 @Entity('logs')

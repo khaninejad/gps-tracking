@@ -1,5 +1,5 @@
 import {AppDataSource} from '../config/datasource';
-import {DeviceService} from './device.service';
+import {DeviceService} from './device-service';
 
 jest.mock('../config/datasource', () => ({
   AppDataSource: {

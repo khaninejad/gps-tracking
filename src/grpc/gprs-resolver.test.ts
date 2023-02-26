@@ -1,9 +1,9 @@
 import {GpsData, GpsResponse} from '../proto/gps_pb';
 import * as grpc from '@grpc/grpc-js';
-import {GpsLogService} from '../services/gpsLog.service';
-import {GpsService} from './send.data';
+import {GpsLogService} from '../services/gpslog-service';
+import {GpsService} from './gprs-resolver';
 
-jest.mock('../services/gpsLog.service');
+jest.mock('../services/gpslog-service');
 
 describe('GpsService', () => {
   const mockCallback = jest.fn();

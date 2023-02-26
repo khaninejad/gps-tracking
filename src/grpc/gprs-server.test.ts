@@ -1,6 +1,6 @@
 import * as grpc from '@grpc/grpc-js';
 import {GRPC_SERVER_ADDRESS} from '../config/config';
-import {GrpcServer} from './server';
+import {GrpcServer} from './gprs-server';
 
 jest.mock('@grpc/grpc-js');
 jest.mock('../config/datasource', () => ({

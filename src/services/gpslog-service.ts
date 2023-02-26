@@ -1,6 +1,6 @@
 import {AppDataSource} from '../config/datasource';
-import {GpsLog} from '../entities/gpsLog';
-import {DeviceService} from './device.service';
+import {GpsLog} from '../entities/gpslog';
+import {DeviceService} from './device-service';
 
 export class GpsLogService {
   private gpsLogRepository = AppDataSource.getRepository(GpsLog);
