@@ -14,8 +14,7 @@ export class CreateLogInput {
 class GpsLogController {
   async createGpsLogHandler(
     req: Request<{}, {}, CreateLogInput>,
-    res: Response,
-    next: NextFunction
+    res: Response
   ): Promise<boolean> {
     Logger.info('GpsLogController createGpsLog');
     try {
@@ -32,7 +31,6 @@ class GpsLogController {
         status: 'fail',
         message: error.message,
       });
-      next(error);
     }
     return true;
   }

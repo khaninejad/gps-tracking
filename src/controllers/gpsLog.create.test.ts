@@ -36,8 +36,7 @@ describe('GpsLogController', () => {
       jest.spyOn(gpsLogController, 'getGrpcData').mockResolvedValue(response);
       await gpsLogController.createGpsLogHandler(
         req as Request,
-        res as Response,
-        next
+        res as Response
       );
       expect(res.status).toHaveBeenCalledWith(201);
       expect(res.json).toHaveBeenCalledWith({
@@ -52,8 +51,7 @@ describe('GpsLogController', () => {
         .mockRejectedValue(new Error());
       await gpsLogController.createGpsLogHandler(
         req as Request,
-        res as Response,
-        next
+        res as Response
       );
       expect(res.status).toHaveBeenCalledWith(409);
       expect(res.json).toHaveBeenCalledWith({

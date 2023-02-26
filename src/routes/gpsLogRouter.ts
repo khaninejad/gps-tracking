@@ -10,8 +10,8 @@ const tokenVerifier = new TokenVerifier(deviceService);
 
 router
   .route('/')
-  .post(tokenVerifier.verifyToken.bind(tokenVerifier), (req, res, next) => {
-    gpsLogController.createGpsLogHandler(req, res, next);
+  .post(tokenVerifier.verifyToken.bind(tokenVerifier), (req, res) => {
+    gpsLogController.createGpsLogHandler(req, res);
   });
 
 export default router;
