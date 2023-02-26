@@ -1,4 +1,5 @@
-require('dotenv').config();
+import * as dotenv from 'dotenv';
+dotenv.config();
 import * as express from 'express';
 import gpsLogRouter from './routes/gpsLogRouter';
 import deviceRouter from './routes/deviceRouter';
