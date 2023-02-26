@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {GpsData, GpsResponse} from '../proto/gps_pb';
 import * as grpc from '@grpc/grpc-js';
 import {DeviceService} from '../services/device-service';

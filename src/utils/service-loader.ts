@@ -1,10 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {loadSync} from '@grpc/proto-loader';
 import * as grpc from '@grpc/grpc-js';
-
-declare function _exports(
-  maxRetries: number,
-  retryStatuses: number[]
-): (options: any, nextCall: any) => any;
 
 export class ServiceLoader {
   static load<T extends grpc.Client>(args: {

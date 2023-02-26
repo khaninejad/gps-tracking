@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {AppDataSource} from '../config/datasource';
 import {DeviceService} from './device-service';
 import {GpsLogService} from './gpslog-service';
